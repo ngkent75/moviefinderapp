@@ -41,7 +41,6 @@ function wikiFetch() {
     });
 };
 
-=======
 // script goes here
 $('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
     e.preventDefault();
