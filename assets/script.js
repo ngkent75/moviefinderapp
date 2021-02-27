@@ -6,6 +6,8 @@ var userInput = 'John Wick';
 var movieURL = 'https://www.omdbapi.com/?apikey=' + keyA + '&t=' + userInput;
 var wikiPath = userInput.split(' ').join('%');
 var encodedName = encodeURIComponent(userInput + ' (film)')
+var searchInputEl = document.getElementById('search');
+var search;
 
 var wikiURL = 'https://en.wikipedia.org/w/api.php?action=query&titles=' + encodedName + '&format=json&origin=*&prop=links'
 
@@ -54,82 +56,50 @@ function wikiFetch() {
 };
 
 
-
-/Declaring Variables
-
-var actionRemeber = document.querySelector('#action-remember');
-var adventureRemeber = document.querySelector('#adventure-remember');
-var comedyRemeber = document.querySelector('#comedy-remember');
-var horrorRemeber = document.querySelector('#horror-remember');
-var romanceRemeber = document.querySelector('#romance-remember');
-
-//When checkbox is selected, pull that category of movie
+var userFormEl = document.querySelector('#user-form');
+var storageArr = [];
 
 
-actionRemeber.addEventListener('change', function(e){
-    if(actionRemeber.checked){
-        console.log(actionRemeber);
-    } else {
-        console.log(actionRemeber);
+var formSubmitHandler = function (event) {
+    event.preventDefault();
+    
+    console.log('test');
+    search = searchInputEl.value;
+    storeHistory();
+    init();
+};
+
+userFormEl.addEventListener('submit', formSubmitHandler);
+
+function storeHistory() {
+    
+    if (search) {
+
+        storageArr.push(search);
+        localStorage.setItem('history', JSON.stringify(storageArr));
+        return;
     }
-});
+}
 
-adventureRemeber.addEventListener('change', function(e){
-    if(adventureRemeber.checked){
-        console.log(adventureRemeber);
-    } else {
-        console.log(adventureRemeber);
+function init() {
+    var storedHistory = JSON.parse(localStorage.getItem('history'))
+    console.log(storedHistory);
+    if (storedHistory !== null) {
+        storageArr = storedHistory
     }
-});
+    return;
+}
 
-comedyRemeber.addEventListener('change', function(e){
-    if(comedyRemeber.checked){
-        console.log(comedyRemeber);
-    } else {
-        console.log(comedyRemeber);
-    }
-});
+init();
 
-horrorRemeber.addEventListener('change', function(e){
-    if(horrorRemeber.checked){
-        console.log(horrorRemeber);
-    } else {
-        console.log(horrorRemeber);
-    }
-});
 
-romanceRemeber.addEventListener('change', function(e){
-    if(romanceRemeber.checked){
-        console.log(romanceRemeber);
-    } else {
-        console.log(romanceRemeber);
-    }
-});
 
-// script goes here
 
-$('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
-    e.preventDefault();
-    $(this).parents('.app-dashboard').toggleClass('shrink-medium').toggleClass('shrink-large');
-  });
-  //More (Expand) or Less (Collapse)
-$('.categories-menu.menu.nested').each(function(){
-    var filterAmount = $(this).find('li').length;
-    if( filterAmount > 5){    
-      $('li', this).eq(4).nextAll().hide().addClass('toggleable');
-      $(this).append('<li class="more">More</li>');    
-    }  
-  });
-  
-  $('.categories-menu.menu.nested').on('click','.more', function(){
-    if( $(this).hasClass('less') ){    
-      $(this).text('More').removeClass('less');    
-    }else{
-      $(this).text('Less').addClass('less'); 
-    }
-    $(this).siblings('li.toggleable').slideToggle(); 
-  }); 
-  
+
+
+
+
+
   
   
 
