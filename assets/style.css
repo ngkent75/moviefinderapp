@@ -43,7 +43,7 @@ a:focus {
   
   .box-1 {
     border: 20px solid;
-    border-image-source: url(/url/to/some/fancy/image.jpg);
+    /* border-image-source: url(/url/to/some/fancy/image.jpg); */
     border-image-slice: 60 30;
   }
 .sidebar {
