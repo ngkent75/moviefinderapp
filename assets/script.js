@@ -2,7 +2,7 @@
 // Declared variables
 var keyA = '599c1b07';
 var keyB = '15010a1a6526890db1028fed6712f26f';
-var userInput = 'John Wick';
+var userInput = 'Jack Reacher';
 var movieURL = 'https://www.omdbapi.com/?apikey=' + keyA + '&t=' + userInput;
 var wikiPath = userInput.split(' ').join('%');
 var encodedName = encodeURIComponent(userInput + ' (film)')
@@ -23,10 +23,46 @@ function movieFetch() {
         var newTitle = document.createElement('h2')
         newTitle.textContent = data.Title
         document.body.append(newTitle)
-        // Starts fetches for poster after so the poster generates underneath.
+
+        var ratings = data.Ratings
+        // Contains all the ratings
+        var allRatings = 
+        ratings[0]['Source'] + ': ' + ratings[0]['Value'] + '\n' + 
+        ratings[1]['Source'] + ': ' + ratings[1]['Value'] + '\n' + 
+        ratings[2]['Source'] + ': ' + ratings[2]['Value'] + '\n' +
+        'IMDB Rating: ' + data.imdbRating + '\n' +
+        'Metascore: ' + data.Metascore
+        
+        // All information stored in array
+        var infoArr = [
+            'MPA Rating: ' + data.Rated,
+            'Runtime: ' + data.Runtime,
+            'Genres: ' + data.Genre,
+            'Summary: ' + data.Plot,
+            'Release Date: ' + data.Released,
+            allRatings,
+            'Actors: ' + data.Actors,
+            'Directors: ' + data.Director,
+            'Writers: ' + data.Writer,
+            'Box Office Earnings: ' + data.BoxOffice,
+            'Production Team: ' + data.Production
+        ]
+
+        // Loops through array and populates webpage and console
+        for (i = 0; i < infoArr.length; i++) {
+            console.log(infoArr[i]);
+            var infoItem = document.createElement('p')
+            infoItem.textContent = infoArr[i]
+            document.body.append(infoItem)
+        }
+        
+            
+
+        // Starts fetches for wiki.
         wikiFetch();
     });
 }
+
 
 movieFetch();
 
@@ -69,6 +105,8 @@ var formSubmitHandler = function (event) {
     init();
 };
 
+
+// local storage
 userFormEl.addEventListener('submit', formSubmitHandler);
 
 function storeHistory() {
@@ -91,15 +129,3 @@ function init() {
 }
 
 init();
-
-
-
-
-
-
-
-
-
-  
-  
-
