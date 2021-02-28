@@ -40,16 +40,22 @@ body {
     font-weight: bold;
     letter-spacing: 1.25px;
 }
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
+}
 #sidebarMenu {
     height: 100%;
     position: fixed;
     left: 0;
     width: 250px;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+    background: linear-gradient(180deg, red 0%, black 100%);
+    /* background: red; */
 }
+
 .sidebarMenuInner{
     margin:0;
     padding:0;
@@ -58,9 +64,7 @@ body {
 .sidebarMenuInner li{
     list-style: none;
     color: #fff;
-    text-transform: uppercase;
     font-weight: bold;
-    padding: 20px;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
@@ -83,8 +87,8 @@ input[type="checkbox"]:checked ~ #sidebarMenu {
 input[type=checkbox] {
     transition: all 0.3s;
     box-sizing: border-box;
-    display: none;
 }
+
 .sidebarIconToggle {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -142,4 +146,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
+}
+.openSidebarMenu {
+    display: none;
+}
+#search {
+    color: black;
 }
