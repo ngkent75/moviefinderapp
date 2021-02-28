@@ -1,36 +1,64 @@
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move Finder</title>
-    <link rel="stylesheet" href="/css/pure/pure-min.css">
-    <link rel="stylesheet" href="/css/pure/grids-responsive-min.css">
-    <link rel="stylesheet" href="/layouts/blog/styles.css">
+    <!-- <link rel="stylesheet" href="/css/pure/pure-min.css"> -->
+    <!-- <link rel="stylesheet" href="/css/pure/grids-responsive-min.css"> -->
+    <!-- <link rel="stylesheet" href="/layouts/blog/styles.css"> -->
     <link rel="stylesheet" href="./assets/style.css">
 </head>
- 
+
 <body>
     <div id="layout" class="pure-g">
         <div class="sidebar pure-u-1 pure-u-md-1-4">
             <div class="header">
                 <h1 class="brand-title">MovieFinder</h1>
- 
+
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a class="pure-button" href="">Search</a>
-                            <input id="" type="text">
+                            <form id="user-form">
+                                <input id="search" type="text">
+                                <button type="submit">Search</button>
+                            </form>
                         </li>
                     </ul>
                 </nav>
+
+                <ul>
+                    <li>
+                        <input type="checkbox" id="test1">
+                        <label for="test1">test</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="test2">
+                        <label for="test2">test</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="test3">
+                        <label for="test3">test</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="test4">
+                        <label for="test4">test</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="test5">
+                        <label for="test5">test</label>
+                    </li>
+                    
+                </ul>
+
             </div>
         </div>
- 
+
         <div class="content pure-u-1 pure-u-md-3-4">
             <div>
                 <div class="posts">
+<<<<<<< HEAD
                     <form class="pure-form">
                         <fieldset>
                             <legend>Filter for movie selection</legend>
@@ -50,16 +78,20 @@
                         </fieldset>
                     </form>
  
+=======
+                    <h1 class="content-subhead">Find your movie!</h1>
+
+>>>>>>> a0455f5a6219f6e0b1f11e99e52d7ca6c45f2edd
                     <section class="post">
                         <header class="post-header">
                             <h2 class="post-title">List of Results</h2>
- 
+
                             <p class="post-meta">
                                 Film by <a href="#" class="post-author" id="author"></a>
                             </p>
                         </header>
                         <div class="box box-1"> <img src="" alt="Poster"> </div>
- 
+
                         <div class="post-description" id="movieDescription">
                             <p>
                                 Movie stuff goes here Movie stuff goes here Movie stuff goes here Movie stuff goes here
@@ -69,20 +101,20 @@
                         </div>
                     </section>
                 </div>
- 
- 
+
+
             </div>
         </div>
         <div class="content pure-u-1 pure-u-md-3-4">
             <div>
                 <div class="posts">
                     <h1 class="content-subhead">Related to your search</h1>
- 
+
                     <section class="post">
                         <header class="post-header">
                             <h2 class="post-title">List of Results</h2>
                         </header>
- 
+
                         <div class="post-description" id="relatedSearches">
                             <ul>
                                 <li>related book</li>
@@ -92,9 +124,9 @@
                         </div>
                     </section>
                 </div>
- 
- 
+
+
             </div>
         </div>
-            <script src="./assets/script.js"></script>
+        <script src="./assets/script.js"></script>
 </body>
