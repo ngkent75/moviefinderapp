@@ -56,7 +56,9 @@ a:focus {
     /* border-image-source: url(/url/to/some/fancy/image.jpg); */
     border-image-slice: 60 30;
   }
-
+button {
+  color: none;
+}
 .sidebar {
     /* background: rgb(61, 79, 93); */
     color: #fff;
