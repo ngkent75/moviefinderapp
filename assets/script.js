@@ -1,16 +1,42 @@
 // Declared variables
 var keyA = '599c1b07';
 var keyB = '15010a1a6526890db1028fed6712f26f';
-var userInput = 'Jack Reacher';
-var movieURL = 'https://www.omdbapi.com/?apikey=' + keyA + '&t=' + userInput;
-var wikiPath = userInput.split(' ').join('%');
-var encodedName = encodeURIComponent(userInput + ' (film)')
 var searchInputEl = document.getElementById('search');
-var search;
 
-var wikiURL = 'https://en.wikipedia.org/w/api.php?action=query&titles=' + encodedName + '&format=json&origin=*&prop=links'
+// var userInput = searchInputEl.value
+var userInput;
+var movieURL;
+
+var encodedName;
+var search;
+var userFormEl = document.querySelector('#user-form');
+var storageArr = [];
+
+var wikiURL;
 
 // Fetch request for OMDB. Creates element for title for now.
+
+
+var formSubmitHandler = function (event) {
+    event.preventDefault();
+
+    userInput = searchInputEl.value
+    movieURL = 'https://www.omdbapi.com/?apikey=' + keyA + '&t=' + userInput;
+    console.log(searchInputEl.value);
+    var encodedName = encodeURIComponent(userInput + ' (film)');
+    wikiURL = 'https://en.wikipedia.org/w/api.php?action=query&titles=' + encodedName + '&format=json&origin=*&prop=links';
+
+
+
+    search = searchInputEl.value;
+    movieFetch();
+    storeHistory();
+    init();
+};
+
+
+userFormEl.addEventListener('submit', formSubmitHandler);
+
 
 function movieFetch() {
     fetch(movieURL)
@@ -51,11 +77,20 @@ function movieFetch() {
                 ]
 
                 // Loops through array and populates webpage and console
+
+                var movieStuffEl = document.getElementById('movieStuff')
+
+                while (movieStuffEl.firstChild) {
+                    movieStuffEl.removeChild(movieStuffEl.childNodes[0]);
+                }
+
                 for (var i = 0; i < infoArr.length; i++) {
-                    console.log(infoArr[i]);
-                    var infoItem = document.createElement('p')
-                    infoItem.textContent = infoArr[i]
-                    document.body.append(infoItem)
+                    if (document.getElementById('checkbox' + i).checked) {
+                        console.log(infoArr[i]);
+                        var infoItem = document.createElement('p')
+                        infoItem.textContent = infoArr[i]
+                        movieStuffEl.append(infoItem)
+                    }
                 }
 
 
@@ -68,7 +103,7 @@ function movieFetch() {
 
 
 
-movieFetch();
+
 
 // Fetches wikipedia related media
 function wikiFetch() {
@@ -94,14 +129,18 @@ function wikiFetch() {
             console.log(data);
             var wikiID = data.continue.plcontinue.split('|')[0]
 
-            var uList = document.createElement('ul')
-            uList.id = 'mediaList'
-            document.body.append(uList)
             var relatedMedia = data.query.pages[wikiID]['links']
+
+            var relatedStuffEl = document.getElementById('relatedSearches')
+
+            while (relatedStuffEl.firstChild) {
+                relatedStuffEl.removeChild(relatedStuffEl.childNodes[0]);
+            }
+
             for (i = 0; i < relatedMedia.length; i++) {
                 var lItem = document.createElement('li')
                 lItem.textContent = relatedMedia[i]['title']
-                uList.append(lItem)
+                relatedStuffEl.append(lItem)
             }
 
 
@@ -110,24 +149,8 @@ function wikiFetch() {
 }
 
 
-//When checkbox is selected, pull that category of movie
-
-var userFormEl = document.querySelector('#user-form');
-var storageArr = [];
-
-
-var formSubmitHandler = function (event) {
-    event.preventDefault();
-
-    console.log('test');
-    search = searchInputEl.value;
-    storeHistory();
-    init();
-};
-
 
 // local storage
-userFormEl.addEventListener('submit', formSubmitHandler);
 
 function storeHistory() {
 
