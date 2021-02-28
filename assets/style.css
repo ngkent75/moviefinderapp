@@ -33,10 +33,11 @@ a:focus {
 }
  
 .header {
-    text-align: center;
-    top: auto;
-    margin: 3em auto;
+  text-align: center;
+  top: auto;
+  margin: 3em auto;
 }
+
 .box {
     width: 400px;
     height: 200px;
@@ -234,5 +235,12 @@ body {
     
   } 
   
+  .test{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
   
-  
+  .movie-header{
+    margin-bottom: -2;
+  }
