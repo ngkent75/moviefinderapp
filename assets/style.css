@@ -22,7 +22,7 @@ a:focus {
  li {
      list-style: none;
  }
- 
+ /* recent searches */
 #recentS {
     font-size: larger;
     text-align: center;
