@@ -83,7 +83,7 @@ movieFetch();
 function wikiFetch() {
 
 
-  fetch(testWiki)
+  fetch(wikiURL)
     .then(function (response) {
       return response.json();
     })
@@ -94,7 +94,7 @@ function wikiFetch() {
       var relatedMedia = data.query.pages[wikiID]['links']
       console.log(relatedMedia);
 
-
+    })
     fetch (wikiURL)
     .then (function (response) {
         return response.json();
@@ -116,7 +116,8 @@ function wikiFetch() {
         
 
     });
-};
+}
+
 
 
 
@@ -158,42 +159,30 @@ function storeHistory() {
     
     if (search) {
 
-        storageArr.push(search);
+        storageArr.unshift(search);
         localStorage.setItem('history', JSON.stringify(storageArr));
         return;
     }
-}
-// renders history
-function renderHistory() {
-    var grabHistory = JSON.parse(localStorage.getItem('history'));
-    var recentS = document.getElementById('recentS') 
-    var liItem1 = document.createElement('li')
-    var liItem2 = document.createElement('li')
-    var liItem3 = document.createElement('li')
-    var liItem4 = document.createElement('li')
-    var liItem5 = document.createElement('li')
-    liItem1.id = 'recentSearch1'
-    liItem2.id = 'recentSearch2'
-    liItem3.id = 'recentSearch3'
-    liItem4.id = 'recentSearch4'
-    liItem5.id = 'recentSearch5'
-    for (i = 0; i < history.length; i++) {
-        liItem1.textContent = grabHistory[0]
-        liItem2.textContent = grabHistory[1]
-        liItem3.textContent = grabHistory[2]
-        liItem4.textContent = grabHistory[3]
-        liItem5.textContent = grabHistory[4]
-        recentS.append(liItem1, liItem2, liItem3, liItem4, liItem5)
-        
 
-    }
 }
-renderHistory();
+
 function init() {
     var storedHistory = JSON.parse(localStorage.getItem('history'))
     console.log(storedHistory);
     if (storedHistory !== null) {
         storageArr = storedHistory
+    }
+
+    var historyULEl = document.getElementById('historyUL') 
+
+    while (historyULEl.firstChild) {
+        historyULEl.removeChild(historyULEl.childNodes[0]);
+    }
+    
+    for (var i = 0; i < 5; i++) {
+        var historyItem = document.createElement('li')
+        historyItem.textContent = storedHistory[i]
+        historyULEl.append(historyItem)
     }
     return;
 }
