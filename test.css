@@ -1,0 +1,114 @@
+.container label {
+    align-items: flex-start;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.container label input {
+    position: absolute;
+    left: -1000px;
+}
+.container label input:checked + .sidebar {
+    width: 5vw;
+    transition: width 500ms ease;
+}
+.container label input:checked + .sidebar .sidebar_control {
+    padding-right: 1.75vw;
+}
+.container label input:checked + .sidebar .sidebar_control i.fa-bars {
+    display: none;
+}
+.container label input:checked + .sidebar .sidebar_control i.fa-chevron-right {
+    display: block;
+}
+.container label input:checked + .sidebar + .content {
+    width: 95vs;
+    transition: width 500ms ease;
+}
+.container label input:not(checked) + .sidebar {
+    width: 15vw;
+    transition: width 500ms ease;
+}
+.container label input:not(checked) + .sidebar .sidebar_control {
+    padding-right: 2vw;
+}
+.container label input:not(checked) + .sidebar .sidebar_control i.fa-bars {
+    display: block;
+}
+.container label input:not(checked) + .sidebar .sidebar_control i.fa-chevron-right {
+    display: none;
+}
+.container label input:not(checked) + .sidebar + .content {
+    width: 85vw;
+    transition: width 500ms ease;
+}
+.container label .sidebar {
+    background-color: rgba(5, 26, 56, 1);
+    color: rgba(117, 138, 168, 1);
+    display: block;
+    height: 100vh;
+    align-items: flex-start;
+    box-shadow: 2px 0 2px 0 rgba(5, 26, 56, 0.75);
+    z-index: 1;
+}
+.container label .sidebar_control {
+    align-items: center;
+    display: flex;
+    font-size: 2rem;
+    height: 10vh;
+    justify-content: end;
+}
+.container label .sidebar_control i {
+    cursor: pointer;
+    pointer-events: auto;
+}
+.container label .sidebar_content {
+    display: flex;
+    height: 90vh;
+}
+/* .container label .content {
+    background-color: rgba(110, 164, 152, 1);
+    display: block;
+    height: 100vh;
+} */
+input {
+    position: absolute;
+    left: -1000px;
+}
+input:checked + .sidebar {
+    width: 5vw;
+    transition: width 500ms ease;
+}
+input:checked + .sidebar .sidebar_control {
+    padding-right: 1.75vw;
+}
+input:checked + .sidebar .sidebar_control i.fa-bars {
+    display: none;
+}
+input:checked + .sidebar .sidebar_control i.fa-chevron-right {
+    display: block;
+}
+input:checked + .sidebar + .content {
+    width: 95vw;
+    transition: width 500ms ease;
+}
+.sidebar {
+    width: 15vw;
+    transition: width 500ms ease;
+}
+.sidebar .sidebar_control {
+    padding-right: 2vw;
+}
+.sidebar .sidebar_control i.fa-bars {
+    display: block;
+}
+.sidebar .sidebar_control i.fa-chevron-right {
+    display: none;
+}
+.sidebar + .content {
+    width: 85vw;
+    transition: width 500ms ease;
+}

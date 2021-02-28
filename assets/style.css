@@ -1,5 +1,6 @@
 ul {
     text-align: center;
+    align-content: center;
 }
 
 
@@ -19,6 +20,7 @@ a:focus {
 }
  
 /* LAYOUT CSS */
+
  li {
      list-style: none;
  }
@@ -212,7 +214,7 @@ body {
     display: flex;
     margin: 0;
     padding: 0 100px;
-    justify-content: flex-end;
+    justify-content: center;
   }
   
   nav ul li {
