@@ -61,7 +61,7 @@ function movieFetch() {
         ]
 
         // Loops through array and populates webpage and console
-        for (i = 0; i < infoArr.length; i++) {
+        for (var i = 0; i < infoArr.length; i++) {
             console.log(infoArr[i]);
             var infoItem = document.createElement('p')
             infoItem.textContent = infoArr[i]
@@ -118,23 +118,6 @@ function wikiFetch() {
     });
 }
 
-
-
-
-//Declaring Variables
-
-var actors = document.querySelector('#actors');
-var awards = document.querySelector('#awards');
-var earnings = document.querySelector('#earnings');
-var directors = document.querySelector('#directors');
-var genre = document.querySelector('genre');
-var ratings = document.querySelector('#ratings');
-var summray = document.querySelector('#summary');
-var productionteam = document.querySelector('#productionteam');
-var pgr = document.querySelector('#pgr');
-var reldate = document.querySelector('#reldate');
-var runtime = document.querySelector('#runtime');
-var writer = document.querySelector('#writer');
 
 //When checkbox is selected, pull that category of movie
 
