@@ -11,68 +11,59 @@ var search;
 var wikiURL = 'https://en.wikipedia.org/w/api.php?action=query&titles=' + encodedName + '&format=json&origin=*&prop=links'
 
 // Fetch request for OMDB. Creates element for title for now.
-fetch(movieURL)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    var newTitle = document.createElement('h2')
-    newTitle.textContent = data.Title
-    document.body.append(newTitle)
-    // Starts fetches for poster after so the poster generates underneath.
-    wikiFetch();
-  });
-
 
 function movieFetch() {
-    fetch (movieURL)
-    .then (function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var newTitle = document.createElement('h2')
-        newTitle.textContent = data.Title
-        document.body.append(newTitle)
+    fetch(movieURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            if (data.Error) {
+                console.log("error");
+            } else {
+                var newTitle = document.createElement('h2')
+                newTitle.textContent = data.Title
+                document.body.append(newTitle)
 
-        var ratings = data.Ratings
-        // Contains all the ratings
-        var allRatings = 
-        ratings[0]['Source'] + ': ' + ratings[0]['Value'] + '\n' + 
-        ratings[1]['Source'] + ': ' + ratings[1]['Value'] + '\n' + 
-        ratings[2]['Source'] + ': ' + ratings[2]['Value'] + '\n' +
-        'IMDB Rating: ' + data.imdbRating + '\n' +
-        'Metascore: ' + data.Metascore
-        
-        // All information stored in array
-        var infoArr = [
-            'MPA Rating: ' + data.Rated,
-            'Runtime: ' + data.Runtime,
-            'Genres: ' + data.Genre,
-            'Summary: ' + data.Plot,
-            'Release Date: ' + data.Released,
-            allRatings,
-            'Actors: ' + data.Actors,
-            'Directors: ' + data.Director,
-            'Writers: ' + data.Writer,
-            'Box Office Earnings: ' + data.BoxOffice,
-            'Production Team: ' + data.Production
-        ]
+                var ratings = data.Ratings
+                // Contains all the ratings
+                var allRatings =
+                    ratings[0]['Source'] + ': ' + ratings[0]['Value'] + '\n' +
+                    ratings[1]['Source'] + ': ' + ratings[1]['Value'] + '\n' +
+                    ratings[2]['Source'] + ': ' + ratings[2]['Value'] + '\n' +
+                    'IMDB Rating: ' + data.imdbRating + '\n' +
+                    'Metascore: ' + data.Metascore
 
-        // Loops through array and populates webpage and console
-        for (var i = 0; i < infoArr.length; i++) {
-            console.log(infoArr[i]);
-            var infoItem = document.createElement('p')
-            infoItem.textContent = infoArr[i]
-            document.body.append(infoItem)
-        }
-        
-            
+                // All information stored in array
+                var infoArr = [
+                    'MPA Rating: ' + data.Rated,
+                    'Runtime: ' + data.Runtime,
+                    'Genres: ' + data.Genre,
+                    'Summary: ' + data.Plot,
+                    'Release Date: ' + data.Released,
+                    allRatings,
+                    'Actors: ' + data.Actors,
+                    'Directors: ' + data.Director,
+                    'Writers: ' + data.Writer,
+                    'Box Office Earnings: ' + data.BoxOffice,
+                    'Production Team: ' + data.Production
+                ]
 
-        // Starts fetches for wiki.
-        wikiFetch();
-    });
+                // Loops through array and populates webpage and console
+                for (var i = 0; i < infoArr.length; i++) {
+                    console.log(infoArr[i]);
+                    var infoItem = document.createElement('p')
+                    infoItem.textContent = infoArr[i]
+                    document.body.append(infoItem)
+                }
+
+
+
+                // Starts fetches for wiki.
+                wikiFetch();
+            }
+        });
 }
 
 
@@ -83,39 +74,39 @@ movieFetch();
 function wikiFetch() {
 
 
-  fetch(wikiURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      var wikiID = data.continue.plcontinue.split('|')[0]
-      console.log(wikiID);
-      var relatedMedia = data.query.pages[wikiID]['links']
-      console.log(relatedMedia);
+    fetch(wikiURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            var wikiID = data.continue.plcontinue.split('|')[0]
+            console.log(wikiID);
+            var relatedMedia = data.query.pages[wikiID]['links']
+            console.log(relatedMedia);
 
-    })
-    fetch (wikiURL)
-    .then (function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var wikiID = data.continue.plcontinue.split('|')[0]
+        })
+    fetch(wikiURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            var wikiID = data.continue.plcontinue.split('|')[0]
 
-        var uList = document.createElement('ul')
-        uList.id = 'mediaList'
-        document.body.append(uList)
-        var relatedMedia = data.query.pages[wikiID]['links']
-        for (i = 0; i < relatedMedia.length; i++) {
-          var lItem = document.createElement('li')
-          lItem.textContent = relatedMedia[i]['title']
-          uList.append(lItem)
-        }
+            var uList = document.createElement('ul')
+            uList.id = 'mediaList'
+            document.body.append(uList)
+            var relatedMedia = data.query.pages[wikiID]['links']
+            for (i = 0; i < relatedMedia.length; i++) {
+                var lItem = document.createElement('li')
+                lItem.textContent = relatedMedia[i]['title']
+                uList.append(lItem)
+            }
 
-        
 
-    });
+
+        });
 }
 
 
@@ -127,7 +118,7 @@ var storageArr = [];
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    
+
     console.log('test');
     search = searchInputEl.value;
     storeHistory();
@@ -139,7 +130,7 @@ var formSubmitHandler = function (event) {
 userFormEl.addEventListener('submit', formSubmitHandler);
 
 function storeHistory() {
-    
+
     if (search) {
 
         storageArr.unshift(search);
@@ -156,13 +147,13 @@ function init() {
         storageArr = storedHistory
     }
 
-    var historyULEl = document.getElementById('historyUL') 
+    var historyULEl = document.getElementById('historyUL')
 
     while (historyULEl.firstChild) {
         historyULEl.removeChild(historyULEl.childNodes[0]);
     }
-    
-    for (var i = 0; i < 5; i++) {
+
+    for (var i = 0; i < 4; i++) {
         var historyItem = document.createElement('li')
         historyItem.textContent = storedHistory[i]
         historyULEl.append(historyItem)
