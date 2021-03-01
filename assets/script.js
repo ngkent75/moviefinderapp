@@ -49,13 +49,11 @@ function movieFetch() {
                 console.log("error");
             } else {
                 var titleSpot = document.getElementById('post-header')
-                var newTitle = document.getElementById('movieDescription')
             
-                while (titleSpot.firstChild) {
-                titleSpot.removeChild(titleSpot.childNodes[0]);
+                while (titleSpot.textContent) {
+                titleSpot.textContent = '';
              }
                 titleSpot.textContent = data.Title;
-                newTitle.append(titleSpot);
 
                 var poster = document.getElementById("poster");  
               
