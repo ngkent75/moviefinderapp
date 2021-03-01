@@ -73,13 +73,13 @@ function movieFetch() {
 
                 var ratings = data.Ratings
                 // Contains all the ratings
-                var allRatings =
+                var allRatings =[
                     ratings[0]['Source'] + ': ' + ratings[0]['Value'] + '\n' +
                     ratings[1]['Source'] + ': ' + ratings[1]['Value'] + '\n' +
-                    ratings[2]['Source'] + ': ' + ratings[2]['Value'] + '\n' +
                     'IMDB Rating: ' + data.imdbRating + '\n' +
                     'Metascore: ' + data.Metascore
-
+                ]
+                
                 // All information stored in array
                 var infoArr = [
                     'MPA Rating: ' + data.Rated,
@@ -189,16 +189,16 @@ function init() {
         storageArr = storedHistory
     }
 
-    var historyULEl = document.getElementById('historyUL')
+    var historyOLEl = document.getElementById('historyOL')
 
-    while (historyULEl.firstChild) {
-        historyULEl.removeChild(historyULEl.childNodes[0]);
+    while (historyOLEl.firstChild) {
+        historyOLEl.removeChild(historyOLEl.childNodes[0]);
     }
 
     for (var i = 0; i < 4; i++) {
         var historyItem = document.createElement('li')
         historyItem.textContent = storedHistory[i]
-        historyULEl.append(historyItem)
+        historyOLEl.append(historyItem)
     }
     return;
 }
