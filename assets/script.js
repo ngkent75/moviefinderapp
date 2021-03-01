@@ -93,7 +93,6 @@ function movieFetch() {
 
                 for (var i = 0; i < infoArr.length; i++) {
                     if (document.getElementById('checkbox' + i).checked) {
-                        console.log(infoArr[i]);
                         var infoItem = document.createElement('p')
                         infoItem.textContent = infoArr[i]
                         movieStuffEl.append(infoItem)
@@ -116,7 +115,10 @@ function wikiFetch() {
             return response.json();
         })
         .then(function (data) {
-            var relatedStuffEl = document.getElementById('relatedSearches')
+            var relatedStuffEl = document.getElementById('relatedContent')
+            var relatedContentTitle = document.createElement('h2')
+            relatedContentTitle.textContent = "Related to your search"
+
             // resets related media
             while (relatedStuffEl.firstChild) {
                 relatedStuffEl.removeChild(relatedStuffEl.childNodes[0]);
@@ -124,8 +126,10 @@ function wikiFetch() {
 
             if (data.continue) {
                 // gets the wiki ID to open up proper arrays
+                relatedStuffEl.append(relatedContentTitle)
                 var wikiID = data.continue.plcontinue.split('|')[0]
                 var relatedMedia = data.query.pages[wikiID]['links']
+                
                 
                 // populates items
                 for (i = 0; i < relatedMedia.length; i++) {
@@ -135,6 +139,7 @@ function wikiFetch() {
                 }
             // If can't find wiki, shows message
             } else {
+                relatedStuffEl.append(relatedContentTitle)
                 var lItem = document.createElement('li')
                 lItem.textContent = 'Sorry, no results found'
                 relatedStuffEl.append(lItem)
