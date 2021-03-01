@@ -134,10 +134,13 @@ function wikiFetch() {
         })
         .then(function (data) {
             console.log(data);
-            var wikiID = data.continue.plcontinue.split('|')[0]
-            console.log(wikiID);
-            var relatedMedia = data.query.pages[wikiID]['links']
-            console.log(relatedMedia);
+            if (data.continue) {
+                var wikiID = data.continue.plcontinue.split('|')[0]
+                console.log(wikiID);
+                var relatedMedia = data.query.pages[wikiID]['links']
+                console.log(relatedMedia);
+            }
+            
 
         })
     fetch(wikiURL)
@@ -146,19 +149,25 @@ function wikiFetch() {
         })
         .then(function (data) {
             console.log(data);
-            var wikiID = data.continue.plcontinue.split('|')[0]
-
-            var relatedMedia = data.query.pages[wikiID]['links']
-
             var relatedStuffEl = document.getElementById('relatedSearches')
-
             while (relatedStuffEl.firstChild) {
                 relatedStuffEl.removeChild(relatedStuffEl.childNodes[0]);
             }
 
-            for (i = 0; i < relatedMedia.length; i++) {
+            if (data.continue) {
+                
+                var wikiID = data.continue.plcontinue.split('|')[0]
+                
+                var relatedMedia = data.query.pages[wikiID]['links']
+                
+                for (i = 0; i < relatedMedia.length; i++) {
+                    var lItem = document.createElement('li')
+                    lItem.textContent = relatedMedia[i]['title']
+                    relatedStuffEl.append(lItem)
+                }
+            } else {
                 var lItem = document.createElement('li')
-                lItem.textContent = relatedMedia[i]['title']
+                lItem.textContent = 'Sorry, no results found'
                 relatedStuffEl.append(lItem)
             }
 
@@ -187,19 +196,21 @@ function init() {
     console.log(storedHistory);
     if (storedHistory !== null) {
         storageArr = storedHistory
+        var historyOLEl = document.getElementById('historyOL')
+    
+        while (historyOLEl.firstChild) {
+            historyOLEl.removeChild(historyOLEl.childNodes[0]);
+        }
+    
+        for (var i = 0; i < 4; i++) {
+            if (i < storedHistory.length) {
+                var historyItem = document.createElement('li')
+                historyItem.textContent = storedHistory[i]
+                historyOLEl.append(historyItem)
+            }
+        }
     }
 
-    var historyOLEl = document.getElementById('historyOL')
-
-    while (historyOLEl.firstChild) {
-        historyOLEl.removeChild(historyOLEl.childNodes[0]);
-    }
-
-    for (var i = 0; i < 4; i++) {
-        var historyItem = document.createElement('li')
-        historyItem.textContent = storedHistory[i]
-        historyOLEl.append(historyItem)
-    }
     return;
 }
 
