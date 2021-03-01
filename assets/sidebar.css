@@ -33,6 +33,10 @@ body {
     width: 100%;
     text-align: center;
 }
+.checkbox-list {
+    text-align: left;
+}
+
 .mainInner div{
     display:table-cell;
     vertical-align: middle;

@@ -48,9 +48,28 @@ function movieFetch() {
             if (data.Error) {
                 console.log("error");
             } else {
-                var newTitle = document.createElement('h2')
-                newTitle.textContent = data.Title
-                document.body.append(newTitle)
+                var titleSpot = document.getElementById('post-header')
+                var newTitle = document.getElementById('movieDescription')
+            
+                while (titleSpot.firstChild) {
+                titleSpot.removeChild(titleSpot.childNodes[0]);
+             }
+                titleSpot.textContent = data.Title;
+                newTitle.append(titleSpot);
+
+                var poster = document.getElementById("poster");  
+              
+
+                while (poster.firstChild) {
+                poster.removeChild(poster.childNodes[0]);
+                }
+                var img = document.createElement('img');  
+                  
+                img.src = data.Poster
+                  
+                poster.appendChild(img);  
+               
+                
 
                 var ratings = data.Ratings
                 // Contains all the ratings
