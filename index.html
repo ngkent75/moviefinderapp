@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move Finder</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+        integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
     <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/sidebar.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
         <h1 class="title">Movie Finder Application</h1>
 
     </nav>
-    <input type="checkbox" checked = 'checked' class="openSidebarMenu" id="openSidebarMenu">
+    <input type="checkbox" checked="checked" class="openSidebarMenu" id="openSidebarMenu">
     <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
         <div class="spinner horizontal"></div>
@@ -32,47 +33,47 @@
             </li>
             <li>
                 <h2 id="recentS">Recent Searches</h2>
-                <ol id='historyOL'>
+                <ol id="historyOL">
                 </ol>
             </li>
             <li>
                 <div class="checkbox-list">
                     <div>
                         <p>
-                            <input type="checkbox" id="checkbox0" class="mpararting">
+                            <input type="checkbox" checked="checked" id="checkbox0" class="mpararting">
                             <label for="actors" class="label">MPA Rating</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox1" class="runtime">
+                            <input type="checkbox" checked="checked" id="checkbox1" class="runtime">
                             <label for="runtime" class="label">Runtime</label>
                         </p>
 
                         <p>
-                            <input type="checkbox" id="checkbox2" class="genres">
+                            <input type="checkbox" checked="checked" id="checkbox2" class="genres">
                             <label for="genres" class="label">Genres</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox3" class="summary">
+                            <input type="checkbox" checked="checked" id="checkbox3" class="summary">
                             <label for="summary" class="label">Summary</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox4" class="releasedate">
+                            <input type="checkbox" checked="checked" id="checkbox4" class="releasedate">
                             <label for="releasedate" class="label">Release Date</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox5" class="actors">
+                            <input type="checkbox" checked="checked" id="checkbox5" class="actors">
                             <label for="actors" class="label">Ratings</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox6" class="directors">
+                            <input type="checkbox" checked="checked" id="checkbox6" class="directors">
                             <label for="directos" class="label">Actors</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox7" class="writers">
+                            <input type="checkbox" checked="checked" id="checkbox7" class="writers">
                             <label for="writers" class="label">Directors</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="checkbox8" class="pgr">
+                            <input type="checkbox" checked="checked" id="checkbox8" class="pgr">
                             <label for="pgr" class="label">Writers</label>
                         </p>
                         <p>
@@ -84,54 +85,30 @@
                             <label for="production" class="label">Production Team</label>
                         </p>
                     </div>
+                </div>
             </li>
         </ul>
     </div>
-    <div id="post" class="content pure-u-1 pure-u-md-3-4">
-
-        <div>
-            <p id="post-header" class="post-header">Search for movies in the sidebar</p>
-        </div>
-
-        <p id="poster"></p>
-
-        <div>
-
-            <div class="posts">
-
-                <section class="post">
-
-                    <div class="post-description" id="movieDescription">
-
-                        <div id="movieStuff">
-
-                        </div>
-                        <div class="content pure-u-1 pure-u-md-3-4">
-                            <div>
-                    
-                                <h1 class="content-subhead">Related to your search</h1>
-                    
-                                <section class="post">
-                                    <div class="post-description">
-                                        <ul id="relatedSearches">
-                                        </ul>
-                                        <div class="posts"></div>
-                                    </div>
-                                </section>
-                            </div>
-                    
-                    
-                        </div>
-                    </div>
-
-
-                </section>
+    <!-- <div class="header"></div> -->
+    <div class="hero">
+        <div class="pure-g">
+            <div class="movieContent pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                <div class="l-box">
+                    <h3 id="post-header"></h3>
+                    <p id="movieStuff">
+                </div>
             </div>
-
-
+            <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                <div id="relatedTitle" class="l-box">
+                    <p id="relatedContent">
+                    </p>
+                </div>
+            </div>
+            <div id="poster" class="pure-u-1">
+            </div>
         </div>
-    </div>
-    
     </div>
     <script src="./assets/script.js"></script>
 </body>
+
+</html>
