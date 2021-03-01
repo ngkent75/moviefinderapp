@@ -35,6 +35,8 @@ var formSubmitHandler = function (event) {
 };
 
 
+
+
 userFormEl.addEventListener('submit', formSubmitHandler);
 
 
@@ -202,14 +204,21 @@ function init() {
     
         for (var i = 0; i < 4; i++) {
             if (i < storedHistory.length) {
-                var historyItem = document.createElement('li')
+                const historyItem = document.createElement('li')
                 historyItem.textContent = storedHistory[i]
                 historyOLEl.append(historyItem)
+                historyItem.addEventListener('click', function (event) {
+                    event.preventDefault();
+                
+                    searchInputEl.value = historyItem.textContent
+                    
+                });
             }
         }
     }
 
     return;
 }
+
 
 init();
