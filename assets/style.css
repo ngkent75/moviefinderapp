@@ -159,8 +159,15 @@ button {
     .footer {
         text-align: center;
     }
+
+    
 }
 
+@media screen and (max-widthz: 48em) {
+  .sidebarIconToggle {
+    display: none;
+  }
+}
 
 body {
     margin: 0;
