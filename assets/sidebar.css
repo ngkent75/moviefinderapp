@@ -22,10 +22,6 @@ body {
     z-index: 10;
 }
 
-h1 {
-    font-size: 28px;
-}
-
 .main {
     margin: 0 auto;
     display: block;
@@ -120,6 +116,13 @@ input[type=checkbox] {
     height: 22px;
     width: 22px;
 }
+
+@media screen and (min-width: 48em) {
+    .sidebarIconToggle {
+      display: none;
+    }
+}
+
 .spinner {
     transition: all 0.3s;
     box-sizing: border-box;
