@@ -8,7 +8,7 @@
 
 [Usage](#Usage)
 
-[Criteria](#criteria)
+[Credits](#Credits)
 
 <br>
 
@@ -28,33 +28,49 @@ The movie information is fetched from OMDB and the related media is fetched from
 
 ## Usage
 <br>
-To access the website, go to #
+To access the website, go to https://ngkent75.github.io/moviefinderapp/
 
 <br>
-Click on the search bar to type in the city you want the forecast for, and click the button. Your history will be saved and listed below.
 <br>
 
-![Home](assets/screenshots/demonstration.PNG)
+Click on the search bar in the side panel and type in a movie title. Use the checkboxes to customize what information you would like to see. Once you finished, simply click
+<br>
+
+![Home](assets/screenshots/home.PNG)
+<br>
+
+Information related to the movie and related media will appear depending on the criteria you selected in the checkboxes. A poster of the movie will also be displayed. Your search will be saved to local storage and displayed in a list of your history below the search bar. Clicking on one of the list items in the history will put the text into the search bar.
+<br>
+
+![Search](assets/screenshots/search.PNG)
+<br>
+
+If you search something that is not a valid movie title, you will recieve an error message.
+<br>
+
+![Error](assets/screenshots/error.PNG)
+<br>
+
+The HTML dynamically updates to mobile screens. The content will stack vertically and the side panel becomes a hamburger menu.
+<br>
+
+
 
 
 
 
 <br>
 
-## Criteria
+## Credits
 
 <br>
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+Nathan Kent: https://github.com/ngkent75
+
+Brandon Carter: https://github.com/Brandnn07
+
+Nicholas Marrone: https://github.com/NicholasMarrone-1997
+
+<br>
+
+Pure CSS: https://purecss.io/
