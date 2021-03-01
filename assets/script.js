@@ -9,6 +9,8 @@ var search;
 var userFormEl = document.querySelector('#user-form');
 var storageArr = [];
 var wikiURL;
+var poster;
+var img;
 
 // Fetch request for OMDB
 var formSubmitHandler = function (event) {
@@ -40,6 +42,18 @@ function movieFetch() {
             // if no movie data is pulled
             if (data.Error) {
                 titleSpot.textContent = 'Sorry, not a valid movie title';
+                var movieStuffEl = document.getElementById('movieStuff')
+                var relatedStuffEl = document.getElementById('relatedContent')
+                while (poster.firstChild) {
+                    poster.removeChild(poster.childNodes[0]);
+                }
+                while (movieStuffEl.firstChild) {
+                    movieStuffEl.removeChild(movieStuffEl.childNodes[0]);
+                }
+                while (relatedStuffEl.firstChild) {
+                    relatedStuffEl.removeChild(relatedStuffEl.childNodes[0]);
+                }
+
             } else {
                 // resets title
                 while (titleSpot.textContent) {
@@ -48,7 +62,7 @@ function movieFetch() {
                 // sets title
                 titleSpot.textContent = data.Title;
                 
-                var poster = document.getElementById("poster");  
+                poster = document.getElementById("poster");  
 
                 // resets poster
                 while (poster.firstChild) {
@@ -56,7 +70,7 @@ function movieFetch() {
                 }
 
                 // sets poster
-                var img = document.createElement('img');  
+                img = document.createElement('img');  
                 img.src = data.Poster
                 poster.appendChild(img);  
 
